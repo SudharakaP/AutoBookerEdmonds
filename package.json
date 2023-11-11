@@ -1,0 +1,17 @@
+{
+  "name": "autobooker",
+  "version": "1.0.0",
+  "description": "Simple script to book a slot in the gym",
+  "author": "Sudharaka Palamakumbura",
+  "license": "MIT",
+  "dependencies": {
+    "capsolver": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  }
+}
