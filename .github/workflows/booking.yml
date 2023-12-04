@@ -52,12 +52,16 @@ jobs:
       - name: Run Puppeteer
         run: export PERSON="${{ matrix.person }}" && node add-to-cart.mjs
 
+      # Encrypt screenshot files
+      - name: Encrypt Tar
+        run: |
+          tar -czvf screenshot-${{ matrix.person }}.tar.gz screenshot-${{ matrix.person }}.png screenshot-final-${{ matrix.person }}.png
+          gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} screenshots-${{ matrix.person }}.tar.gz
+
       # Uploads results
       - name: Upload Screenshots
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Screenshots
-          path: |
-            screenshot-${{ matrix.person }}.png
-            screenshot-final-${{ matrix.person }}.png
+          path: screenshots-${{ matrix.person }}.tar.gz.gpg
