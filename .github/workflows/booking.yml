@@ -55,8 +55,8 @@ jobs:
       # Encrypt screenshot files
       - name: Encrypt Tar
         run: |
-          tar -czvf screenshot-${{ matrix.person }}.tar.gz screenshot-${{ matrix.person }}.png screenshot-final-${{ matrix.person }}.png
-          gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} screenshots-${{ matrix.person }}.tar.gz
+          tar -czvf "screenshot-${{ matrix.person }}.tar.gz screenshot-${{ matrix.person }}.png" "screenshot-final-${{ matrix.person }}.png"
+          gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} "screenshots-${{ matrix.person }}.tar.gz"
 
       # Uploads results
       - name: Upload Screenshots
