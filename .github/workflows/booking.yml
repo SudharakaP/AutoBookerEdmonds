@@ -19,6 +19,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Triggers the workflow through a webhook event
+  repository_dispatch:
+    types: [ booking ]
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   add-persons:
