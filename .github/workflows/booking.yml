@@ -52,15 +52,24 @@ jobs:
         with:
           key_encoded: ${{ secrets.DECRYPTION_SECRET }}
 
+      # Setup FFmpeg
+      - name: Setup FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v2
+
       # Runs Puppeteer
       - name: Run Puppeteer
         run: export PERSON="${{ matrix.person }}" && node add-to-cart.mjs
 
-      # Encrypt screenshot files
-      - name: Encrypt Tar
-        run: |
-          tar -czvf "screenshots-${{ matrix.person }}.tar.gz screenshot-${{ matrix.person }}.png" "screenshot-final-${{ matrix.person }}.png" "screenshot-dropdown-${{ matrix.person }}.png"
-          gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} "screenshots-${{ matrix.person }}.tar.gz"
+      # Archive Debug Logs
+      - name: Archive Debug Logs
+        if: always()
+        continue-on-error: true
+        run: tar -czvf "debug-logs-${{ matrix.person }}.tar.gz" "screenshot-${{ matrix.person }}.png" "screenshot-final-${{ matrix.person }}.png" "trace-${{ matrix.person }}.json" "recording-${{ matrix.person }}.webm"
+
+      # Encrypt Debug Logs
+      - name: Encrypt Debug Logs
+        if: always()
+        run: gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} "debug-logs-${{ matrix.person }}.tar.gz"
 
       # Uploads results
       - name: Upload Screenshots
@@ -68,4 +77,4 @@ jobs:
         if: always()
         with:
           name: Screenshots
-          path: screenshots-${{ matrix.person }}.tar.gz.gpg
+          path: debug-logs-${{ matrix.person }}.tar.gz.gpg
