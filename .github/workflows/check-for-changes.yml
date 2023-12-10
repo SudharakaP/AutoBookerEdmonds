@@ -9,6 +9,7 @@ env:
   LOGINS: ${{ vars.LOGINS }}
   SIGN_IN_URL: ${{ vars.SIGN_IN_URL }}
   WISH_LIST_URL: ${{ vars.WISH_LIST_URL }}
+  WISHLIST_RECHECK_MINUTES: ${{ vars.WISHLIST_RECHECK_MINUTES }}
 
 # Controls when the workflow will run
 on:
