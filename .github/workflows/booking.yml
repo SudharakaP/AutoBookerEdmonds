@@ -21,7 +21,7 @@ jobs:
   define-env:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.client_payload.environment }}
+      name: ${{ github.event.client_payload.environment || 'test' }}
     outputs:
       PERSONS: ${{ steps.compute-outputs.outputs.PERSONS }}
       BOOKING_URL: ${{ steps.compute-outputs.outputs.BOOKING_URL }}
