@@ -1,3 +1,4 @@
-![robot](https://github.com/SudharakaP/AutoDetector/assets/12435965/00caa8d1-d2ab-443f-81bf-1b519ca9cb41)
+![robot](https://github.com/OpenArchitex/AutoBooker/assets/12435965/bb431eac-8e52-43e1-8e8a-ed62207b0f63)
 
 Photo Credit: https://pixabay.com/users/bcogwene-1114581/
+
