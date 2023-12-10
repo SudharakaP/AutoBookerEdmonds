@@ -12,5 +12,12 @@
   "engines": {
     "node": "18.x",
     "npm": "9.x"
+  },
+  "devDependencies": {
+    "prettier": "3.1.0"
+  },
+  "scripts": {
+    "start": "node add-to-cart.mjs",
+    "prettier:write": "prettier --write ."
   }
 }

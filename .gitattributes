@@ -1,2 +1,2 @@
 add-to-cart.mjs filter=git-crypt diff=git-crypt
-login.mjs filter=git-crypt diff=git-crypt
+helpers/** filter=git-crypt diff=git-crypt
