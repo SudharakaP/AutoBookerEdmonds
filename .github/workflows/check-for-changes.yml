@@ -1,0 +1,54 @@
+name: Auto Detect Changes
+
+env:
+  USERNAMES: ${{ secrets.USERNAMES }}
+  PASSWORDS: ${{ secrets.PASSWORDS }}
+  SENDING_EMAILS: ${{ secrets.SENDING_EMAILS }}
+  EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+  EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+  LOGINS: ${{ vars.LOGINS }}
+  SIGN_IN_URL: ${{ vars.SIGN_IN_URL }}
+  WISH_LIST_URL: ${{ vars.WISH_LIST_URL }}
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # Triggers the workflow through a webhook event
+  repository_dispatch:
+    types: [check-for-changes]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check-for-changes:
+    strategy:
+      fail-fast: false
+      matrix:
+        login: ${{ fromJson(vars.LOGINS) }}
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Setup Node
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - uses: amplium/git-crypt-action@master
+        with:
+          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+
+      # Runs Puppeteer
+      - name: Run Puppeteer
+        run: export LOGIN="${{ matrix.login }}" && node check-for-changes.mjs
