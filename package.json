@@ -11,8 +11,8 @@
     "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "engines": {
-    "node": "18.x",
-    "npm": "9.x"
+    "node": "20.x",
+    "npm": "10.x"
   },
   "devDependencies": {
     "eslint": "^8.55.0",
@@ -25,7 +25,10 @@
   "scripts": {
     "start-booker": "node add-to-cart.mjs",
     "start-checker": "node check-for-changes.mjs",
+    "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "eslint:fix": "eslint . --ignore-path .gitignore --ext .mjs,.js --fix"
+    "eslint": "eslint . --ignore-path .gitignore --ext .mjs,.js",
+    "eslint:quiet": "npm run eslint -- --quiet",
+    "eslint:fix": "npm run eslint --fix"
   }
 }
