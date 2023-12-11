@@ -1,0 +1,24 @@
+name: Setup Project
+description: Installs Node.js, NPM and dependencies and sets up the project
+
+inputs:
+  DECRYPTION_SECRET:
+    description: The secret used to decrypt the files
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: 'package.json'
+        cache: 'npm'
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci --prefer-offline --no-audit --progress=false
+
+    - uses: amplium/git-crypt-action@master
+      with:
+        key_encoded: ${{ inputs.DECRYPTION_SECRET }}

@@ -20,11 +20,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: amplium/git-crypt-action@master
+      - name: Setup project
+        uses: ./.github/actions/setup-project
         with:
-          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+          DECRYPTION_SECRET: ${{ secrets.DECRYPTION_SECRET }}
 
-      - run: npm run lint:quiet
+      - run: npm run eslint:quiet
 
   prettier:
     runs-on: ubuntu-latest
@@ -35,8 +36,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: amplium/git-crypt-action@master
+      - name: Setup project
+        uses: ./.github/actions/setup-project
         with:
-          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+          DECRYPTION_SECRET: ${{ secrets.DECRYPTION_SECRET }}
 
       - run: npm run prettier:check      -
