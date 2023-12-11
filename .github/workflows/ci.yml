@@ -1,0 +1,42 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: amplium/git-crypt-action@master
+        with:
+          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+
+      - run: npm run lint:quiet
+
+  prettier:
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: amplium/git-crypt-action@master
+        with:
+          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+
+      - run: npm run prettier:check      -
