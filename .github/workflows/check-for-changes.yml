@@ -36,19 +36,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Setup Node
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - name: Setup project
+        uses: ./.github/actions/setup-project
         with:
-          node-version-file: 'package.json'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit
-
-      - uses: amplium/git-crypt-action@master
-        with:
-          key_encoded: ${{ secrets.DECRYPTION_SECRET }}
+          DECRYPTION_SECRET: ${{ secrets.DECRYPTION_SECRET }}
 
       # Runs Puppeteer
       - name: Run Puppeteer
