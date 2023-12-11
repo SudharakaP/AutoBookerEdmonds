@@ -13,8 +13,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-
-    timeout-minutes: 15
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -29,8 +28,7 @@ jobs:
 
   prettier:
     runs-on: ubuntu-latest
-
-    timeout-minutes: 15
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
