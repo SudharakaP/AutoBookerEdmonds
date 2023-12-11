@@ -27,7 +27,8 @@
     "start-checker": "node check-for-changes.mjs",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "eslint:quiet": "npm run lint -- --quiet",
-    "eslint:fix": "eslint . --ignore-path .gitignore --ext .mjs,.js --fix"
+    "eslint": "eslint . --ignore-path .gitignore --ext .mjs,.js",
+    "eslint:quiet": "npm run eslint -- --quiet",
+    "eslint:fix": "npm run eslint --fix"
   }
 }
