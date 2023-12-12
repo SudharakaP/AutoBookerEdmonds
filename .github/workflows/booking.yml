@@ -9,6 +9,12 @@ env:
 
 # Controls when the workflow will run
 on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -21,7 +27,7 @@ jobs:
   define-env:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.client_payload.environment }}
+      name: ${{ github.event.client_payload.environment || 'test' }}
     outputs:
       PERSONS: ${{ steps.compute-outputs.outputs.PERSONS }}
       BOOKING_URL: ${{ steps.compute-outputs.outputs.BOOKING_URL }}
