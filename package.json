@@ -6,7 +6,7 @@
   "dependencies": {
     "capsolver": "^1.0.1",
     "dotenv": "^16.3.1",
-    "nodemailer": "^6.9.7",
+    "nodemailer": "^6.9.8",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
