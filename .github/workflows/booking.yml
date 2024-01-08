@@ -63,7 +63,7 @@ jobs:
 
       # Setup FFmpeg
       - name: Setup FFmpeg
-        uses: FedericoCarboni/setup-ffmpeg@v2
+        uses: FedericoCarboni/setup-ffmpeg@v3
 
       # Runs Puppeteer
       - name: Run Puppeteer
