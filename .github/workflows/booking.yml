@@ -5,7 +5,7 @@ env:
   ED_PASSWORD: ${{ secrets.ED_PASSWORD }}
   CAPTCHA_API_KEY: ${{ secrets.CAPTCHA_API_KEY }}
   SIGN_IN_URL: ${{ vars.SIGN_IN_URL }}
-  RETRY_INTERVAL: ${{ vars.RETRY_INTERVAL }}
+  EXEC_MINS: ${{ vars.EXEC_MINS }}
 
 # Controls when the workflow will run
 on:
