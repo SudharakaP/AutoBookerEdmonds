@@ -7,7 +7,7 @@
     "capsolver": "^1.0.1",
     "dotenv": "^16.4.1",
     "nodemailer": "^6.9.8",
-    "puppeteer": "^21.9.0"
+    "puppeteer": "^21.10.0"
   },
   "engines": {
     "node": "20.x",
