@@ -67,7 +67,7 @@ jobs:
 
       # Runs Puppeteer
       - name: Run Puppeteer
-        run: export PERSON="${{ matrix.person }}" && node add-to-cart.mjs
+        run: export PERSON="${{ matrix.person }}" ENV_NAME="${{ github.event.client_payload.environment || 'test' }}" && node add-to-cart.mjs
 
       # Archive Debug Logs
       - name: Archive Debug Logs
