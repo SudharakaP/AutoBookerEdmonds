@@ -5,7 +5,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "capsolver": "^1.0.1",
-    "dotenv": "^16.4.2",
+    "dotenv": "^16.4.4",
     "nodemailer": "^6.9.9",
     "puppeteer": "^22.0.0"
   },
