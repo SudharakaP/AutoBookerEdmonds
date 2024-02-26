@@ -6,7 +6,7 @@
   "dependencies": {
     "capsolver": "^1.0.1",
     "dotenv": "^16.4.4",
-    "nodemailer": "^6.9.9",
+    "nodemailer": "^6.9.10",
     "puppeteer": "^22.1.0"
   },
   "engines": {
