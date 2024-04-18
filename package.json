@@ -13,6 +13,7 @@
     "npm": "10.x"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "eslint": "^8.57.0",
     "prettier": "3.2.5"
   },
@@ -21,7 +22,7 @@
     "start-checker": "node check-for-changes.mjs",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "eslint": "eslint . --ignore-path .gitignore --ext .mjs,.js",
+    "eslint": "eslint . --ignore-pattern .gitignore --ignore-pattern login-helper-extension --ext .mjs,.js",
     "eslint:quiet": "npm run eslint -- --quiet",
     "eslint:fix": "npm run eslint --fix"
   }
