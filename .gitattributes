@@ -1,2 +1,3 @@
 *.mjs filter=git-crypt diff=git-crypt
 helpers/** filter=git-crypt diff=git-crypt
+login-helper-extension/** filter=git-crypt diff=git-crypt
