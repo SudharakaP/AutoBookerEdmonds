@@ -24,6 +24,6 @@
     "prettier:write": "prettier --write .",
     "eslint": "eslint . --ignore-pattern .gitignore --ignore-pattern login-helper-extension --ext .mjs,.js",
     "eslint:quiet": "npm run eslint -- --quiet",
-    "eslint:fix": "npm run eslint --fix"
+    "eslint:fix": "npm run eslint -- --fix"
   }
 }
