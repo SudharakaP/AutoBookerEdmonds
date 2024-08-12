@@ -4,6 +4,7 @@ env:
   ED_USERNAME: ${{ secrets.ED_USERNAME }}
   ED_PASSWORD: ${{ secrets.ED_PASSWORD }}
   CAPTCHA_API_KEY: ${{ secrets.CAPTCHA_API_KEY }}
+  SENDING_EMAILS: ${{ secrets.SENDING_EMAILS }}
   SIGN_IN_URL: ${{ vars.SIGN_IN_URL }}
   EXEC_MINS: ${{ vars.EXEC_MINS }}
 
