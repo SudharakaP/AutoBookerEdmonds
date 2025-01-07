@@ -65,7 +65,7 @@ jobs:
       # Setup FFmpeg
       # Note: Keep setup-ffmpeg@v2 due to https://github.com/federicocarboni/setup-ffmpeg/issues/19
       - name: Setup FFmpeg
-        uses: FedericoCarboni/setup-ffmpeg@v2
+        uses: FedericoCarboni/setup-ffmpeg@v3
 
       # Runs Puppeteer
       - name: Run Puppeteer
