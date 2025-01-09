@@ -89,3 +89,36 @@ jobs:
         with:
           name: debug-logs-${{ matrix.person }}
           path: debug-logs-${{ matrix.person }}.tar.gz.gpg
+  book-missed-slots:
+    if: always()
+    needs: add-persons
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+        with:
+          DECRYPTION_SECRET: ${{ secrets.DECRYPTION_SECRET }}
+
+      - name: Setup FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v2
+
+      - name: Run Puppeteer
+        run: node book-missed-slots.mjs
+
+      - name: Archive Debug Logs
+        if: always()
+        continue-on-error: true
+        run: tar -czvf "debug-logs-book-missed-slots.tar.gz" "screenshot-book-missed-slots.png" "screenshot-final-book-missed-slots.png" "recording-book-missed-slots.webm"
+
+      - name: Encrypt Debug Logs
+        if: always()
+        run: gpg --batch -c --passphrase ${{ secrets.ARTIFACT_ENCRYPTION_PASS }} "debug-logs-book-missed-slots.tar.gz"
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: debug-logs-book-missed-slots
+          path: debug-logs-book-missed-slots.tar.gz.gpg
